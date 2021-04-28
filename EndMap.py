@@ -229,4 +229,4 @@ async def on_message(message):
                     dirvar2 += 45
                     actdir += 1
         return
-bot.run(Token.discordtoken) #ODM1NjYwMzA1NjkwMjYzNTcy.YISrTg.LEcvqscwPuGw8Rouej6U7z2JAec
+bot.run(Token.discordtoken) 
