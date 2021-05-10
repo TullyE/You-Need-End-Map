@@ -13,6 +13,8 @@ gc = gspread.service_account(filename='credentials.json')
 sh = gc.open_by_key('1Y5YxgrpTuVgS_fkC4Te1ouMQbr7koCUIhVgJVBYsb-0')
 worksheet = sh.sheet1
 
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['DiscordToken'])
 
 
 import discord
@@ -232,4 +234,4 @@ async def on_message(message):
                     dirvar2 += 45
                     actdir += 1
         return
-bot.run(Token.discordtoken) 
+bot.run(s3) 
