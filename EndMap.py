@@ -86,7 +86,7 @@ async def on_message(message):
 
         if message.author.bot:
             return
-            
+
         if message.content == '.help':
             await channel.send(".close returns the nearest end city to the coords you pass in \nTyping in coords adds them to the map")
             return
@@ -131,6 +131,7 @@ async def on_message(message):
         
         if not coord:
             await channel.send("That's the wrong format! Try again!")
+            return
         else:
             worksheet.insert_row(coord, 2)
             await channel.send("Successfully added to the map!\n ")
@@ -227,5 +228,21 @@ async def on_message(message):
                     dirvar1 += 45
                     dirvar2 += 45
                     actdir += 1
+        if '.add' in message.content:
+            ## Variables
+            TheMessage = TheMessage.split('.add')
+            TheMessage = TheMessage[1]
+            try:
+                playercord = player_input_one_coord(TheMessage)
+            except:
+                await channel.send("That's the wrong format! Try again!")
+                return
+            if not playercord:
+                await channel.send("That's the wrong format! Try again!")
+                return
+            else:
+                worksheet.insert_row(playercord, 2)
+                await channel.send("Successfully added to the map!\n ")
         return
+                
 bot.run(os.environ.get('DiscordToken')) 
