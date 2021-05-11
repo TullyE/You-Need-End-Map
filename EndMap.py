@@ -83,6 +83,7 @@ async def on_message(message):
     channel = message.channel
 
     if message.channel.name == '🔢》end-coords': #Channel you want bot to read
+        print('Hello This works')
 
         if message.author.bot:
             return
