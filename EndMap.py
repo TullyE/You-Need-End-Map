@@ -1,21 +1,23 @@
 import gspread # pip install gspread
-
+import json
 
 import os
-
-
-gc = gspread.service_account(filename='credentials.json') 
-sh = gc.open_by_key('1Y5YxgrpTuVgS_fkC4Te1ouMQbr7koCUIhVgJVBYsb-0')
-worksheet = sh.sheet1
-
 
 from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env.
 
+#with open('credentials1.json', 'w') as f:
+#    json.dump(json.loads(os.environ.get('credentials')), f, indent=2)
+
+gc = gspread.service_account_from_dict(json.loads(os.environ.get('credentials'))) 
+sh = gc.open_by_key('1Y5YxgrpTuVgS_fkC4Te1ouMQbr7koCUIhVgJVBYsb-0')
+worksheet = sh.sheet1
+
+
+
+
 import discord
 from discord.ext import commands
-
-import Token 
 
 import numpy as np 
 import math 
