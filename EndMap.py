@@ -2,20 +2,15 @@ import gspread # pip install gspread
 
 
 import os
-cwd = os.getcwd()
-print("Current working directory: {0}".format(cwd))
-print("os.getcwd() returns an object of type: {0}".format(type(cwd)))
-os.chdir(r"C:\Users\Tully\Desktop\Python\You Need End Map")
-cwd = os.getcwd()
-print("Current working directory: {0}".format(cwd))
+
 
 gc = gspread.service_account(filename='credentials.json') 
 sh = gc.open_by_key('1Y5YxgrpTuVgS_fkC4Te1ouMQbr7koCUIhVgJVBYsb-0')
 worksheet = sh.sheet1
 
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['DiscordToken'])
 
+from dotenv import load_dotenv
+load_dotenv()  # take environment variables from .env.
 
 import discord
 from discord.ext import commands
@@ -234,4 +229,4 @@ async def on_message(message):
                     dirvar2 += 45
                     actdir += 1
         return
-bot.run(s3) 
+bot.run(os.environ.get('DiscordToken')) 
