@@ -86,10 +86,7 @@ async def on_message(message):
 
         if message.author.bot:
             return
-        
-        await channel.send('Heroku Push Successful Try 1')
-        await channel.send('Heroku Push Successful Try 2')
-
+            
         if message.content == '.help':
             await channel.send(".close returns the nearest end city to the coords you pass in \nTyping in coords adds them to the map")
             return
