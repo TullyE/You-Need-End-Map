@@ -243,6 +243,32 @@ async def on_message(message):
             else:
                 worksheet.insert_row(playercord, 2)
                 await channel.send("Successfully added to the map!\n ")
+        if '.OWPortal' in message.content:
+            TheMessage = TheMessage.split('.OWPortal')
+            TheMessage = TheMessage[1]
+            try:
+                playercord = player_input_one_coord(TheMessage)
+            except:
+                await channel.send("That's the wrong format! Try again!")
+                return
+            if not playercord:
+                await channel.send("That's the wrong format! Try again!")
+                return
+            else:
+                await channel.send(f'Put a portal in the nether at {round(playercord[0]/8)}/{round(playercord[1]/8)}')
+        if '.NPortal' in message.content:
+            TheMessage = TheMessage.split('.NPortal')
+            TheMessage = TheMessage[1]
+            try:
+                playercord = player_input_one_coord(TheMessage)
+            except:
+                await channel.send("That's the wrong format! Try again!")
+                return
+            if not playercord:
+                await channel.send("That's the wrong format! Try again!")
+                return
+            else:
+                await channel.send(f'Put a portal in the Overworld at {round(playercord[0]*8)}/{round(playercord[1]*8)}')
         return
                 
 bot.run(os.environ.get('DiscordToken')) 
