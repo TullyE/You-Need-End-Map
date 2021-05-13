@@ -134,10 +134,9 @@ async def on_message(message):
             return
         else:
             worksheet.insert_row(coord, 2)
-            await channel.send("Successfully added to the map!\n ")
             embed = discord.Embed()
             embed.description = "Click [here](https://docs.google.com/spreadsheets/d/1Y5YxgrpTuVgS_fkC4Te1ouMQbr7koCUIhVgJVBYsb-0/edit#gid=0) to view the map.\n Made by: 3va and Pandarocket"
-            await channel.send(embed=embed)
+            await channel.send("Successfully added to the map!\n", embed=embed)
         ## end of the upload function
 
 #New Text Channel
