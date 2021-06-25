@@ -76,6 +76,10 @@ def degree(num):
     return num*(180/math.pi)
 
 @bot.event
+async def on_ready():
+    print("The Bot is Online!")
+    
+@bot.event
 async def on_message(message):
 
     #Variables
